@@ -2,7 +2,7 @@
 % !TeX program = xelatex
 % !TeX spellcheck = en_US
 
-\documentclass[degree=doctor]{ustcthesis}
+\documentclass[degree=bachelor]{ustcthesis}
 % degree      = doctor | master | bachelor
 % degree-type = academic | professional
 % language    = chinese | english
@@ -18,26 +18,29 @@
 \copyrightpage
 
 \frontmatter
-\input{chapters/abstract.tex}
+
+\input{chapters/chapter0 abstract.tex}
 \tableofcontents
 % \listoffigures
 % \listoftables
 \input{chapters/notation.tex}
 
 \mainmatter
-\input{chapters/intro.tex}
-\input{chapters/floats.tex}
-\input{chapters/math.tex}
-\input{chapters/citations.tex}
+\input{chapters/chapter1 research background.tex}
+\input{chapters/chapter2 software optimization.tex}
+\input{chapters/chapter3 hardware accelerator design.tex}
+\input{chapters/chapter4 Model evaluation.tex}
+\input{chapters/chapter5 Application.tex}
+\input{chapters/chapter6 Conclusion}
+
+\input{chapters/acknowledgements.tex}
 
 \bibliography{bib/ustc}  % 参考文献使用 BibTeX 编译
 % \printbibliography       % 参考文献使用 BibLaTeX 编译
 
-\appendix
-\input{chapters/complementary.tex}
 
 \backmatter
-\input{chapters/acknowledgements.tex}
+
 \input{chapters/publications.tex}
 
 \end{document}

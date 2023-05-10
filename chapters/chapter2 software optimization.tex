@@ -75,7 +75,7 @@
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{figures/traditional k way sort.pdf}
-    \caption{4路归并排序示意。有序序列6即为最终输出有序序列}
+    \caption{4路归并排序示意}
     \label{fig:traditional_k_way_sort}
 \end{figure}
 传统归并排序采用的``Divide and Conquer"（分治法）进行排序，先将待排序数组分成等量子数组进行排序，分别形成有序数列。然后对有序数列进行排序形成更长的有序数列，不断重复，直到待排序数组完全有序。对于传统的k路排序来说，我们可以直接利用归并排序的``Conquer"部分，即对k个有序数列进行两两排序，不断归并直到最后将k个有序数列归并成一个有序数列。传统k路排序的整体思路如图\ref{fig:traditional_k_way_sort}所示。
@@ -115,7 +115,7 @@
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{figures/loop tiling.pdf}
-    \caption{循环分块算法示意。本图将原循环分割成了长度为B的循环小块。}
+    \caption{循环分块算法示意}
     \label{fig:loop_tiling}
 \end{figure}
 
@@ -126,7 +126,7 @@
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{figures/loop interchange.pdf}
-    \caption{循环交换算法示意。左边是以行优先顺序遍历，右边是以列优先顺序遍历}
+    \caption{循环交换算法示意。左图为行优先顺序遍历，右图为列优先顺序遍历}
     \label{fig:loop_interchange}
 \end{figure}
 循环交换即通过交换内外循环的顺序，使得代码具有更好的空间局部性。因为在C语言中，数据是以行优先的形式存储在cache当中的，所以在设计嵌套循环的时候，应该尽量以行优先遍历数据，从而达到更好的空间局部性。

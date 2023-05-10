@@ -36,7 +36,7 @@
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=12cm]{figures/traditional_radix_sort_algorithm.pdf}
-    \caption{传统基数排序算法示意}
+    \caption{传统基数排序算法示意图}
     \label{fig:traditional_radix_sort}
 \end{figure}
 
@@ -78,7 +78,7 @@
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{figures/merge_sort.pdf}
-    \caption{单一归并排序算法示意}
+    \caption{单一归并排序算法示意图}
     \label{fig:merge_sort}
 \end{figure}
 如果我们想通过单一的归并排序模块来实现对一个无序序列的排序，我们还需要对归并排序模块进行修改以适应硬件特性。单一归并排序可以理解为首先将数组分割成多个长度为2的小块，分别对它们两两归并，然后增加步长到4，再进行两两归并，最后不断重复的过程。如图\ref{fig:merge_sort}所示。但是不同于二输入归并模块，在单一归并模块中，我们只有一个输入，并存放在BRAM当中。由于BRAM最多只能允许同时两路访问，所以并不能完全并行化。因此我们尝试在每个阶段内部实现排序流水线，同时在不同阶段中间应用\verb|#pragma HLS dataflow|。在实例化暂存数组\verb|temp|时，采用\verb|#pragma HLS array_partition|对其进行分割，将其实例成多个BRAM块，从而实现并行访问。这样下来，在综合的时候，硬件能够达到II=1的流水线，性能得到极大的提升。
@@ -108,7 +108,7 @@
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{figures/schedule_viewer.jpeg}
-    \caption{Vitis HLS Schedule Viewer界面}
+    \caption{Vitis HLS Schedule Viewer界面图}
     \label{fig:schedule_viewer}
 \end{figure}
 

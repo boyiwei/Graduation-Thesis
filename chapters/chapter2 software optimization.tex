@@ -75,7 +75,7 @@
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{figures/traditional k way sort.pdf}
-    \caption{4路归并排序示意}
+    \caption{4路归并排序示意图}
     \label{fig:traditional_k_way_sort}
 \end{figure}
 传统归并排序采用的``Divide and Conquer"（分治法）进行排序，先将待排序数组分成等量子数组进行排序，分别形成有序数列。然后对有序数列进行排序形成更长的有序数列，不断重复，直到待排序数组完全有序。对于传统的k路排序来说，我们可以直接利用归并排序的``Conquer"部分，即对k个有序数列进行两两排序，不断归并直到最后将k个有序数列归并成一个有序数列。传统k路排序的整体思路如图\ref{fig:traditional_k_way_sort}所示。
@@ -115,7 +115,7 @@
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{figures/loop tiling.pdf}
-    \caption{循环分块算法示意}
+    \caption{循环分块算法示意图}
     \label{fig:loop_tiling}
 \end{figure}
 
@@ -126,7 +126,7 @@
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{figures/loop interchange.pdf}
-    \caption{循环交换算法示意。左图为行优先顺序遍历，右图为列优先顺序遍历}
+    \caption{循环交换算法示意图。左图为行优先顺序遍历，右图为列优先顺序遍历}
     \label{fig:loop_interchange}
 \end{figure}
 循环交换即通过交换内外循环的顺序，使得代码具有更好的空间局部性。因为在C语言中，数据是以行优先的形式存储在cache当中的，所以在设计嵌套循环的时候，应该尽量以行优先遍历数据，从而达到更好的空间局部性。
@@ -134,7 +134,7 @@
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{figures/loop fusion.pdf}
-    \caption{循环合并与循环分割算法示意}
+    \caption{循环合并与循环分割算法示意图}
     \label{fig:loop_fusion}
 \end{figure}
 循环合并即将多个独立的循环过程合并到一个循环当中，而循环分裂则是相反的过程，将一个循环分割成多个独立的循环过程。循环合并通常是为了减少在多个循环中数据被重复利用的情形下，cache miss的概率，提升空间局部性，同时降低了循环控制结构的开销，消除可能存在的冗余分配，从而提升性能。在HLS当中，可以在循环语句之前添加\verb|#pragma HLS loop_merge|来实现循环合并，并尽可能并行化。
@@ -142,7 +142,7 @@
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{figures/loop unrolling.pdf}
-    \caption{循环展开算法示意}
+    \caption{循环展开算法示意图}
     \label{fig:loop_unrolling}
 \end{figure}
 循环展开通过提升每次循环中执行的操作数量来减少循环次数，降低分支预测的错误概率。同时，在HLS当中，通过循环展开，如果没有数据相关，每个循环内的操作可以并行执行，从而提升了并行度以及处理速度。在HLS当中，可以在需要展开的循环前面添加\verb|#pragma HLS unroll|来将循环展开。
@@ -151,7 +151,7 @@
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{figures/loop flattening.pdf}
-    \caption{循环扁平化算法示意}
+    \caption{循环扁平化算法示意图}
     \label{fig:loop_flattening}
 \end{figure}
 循环扁平化将多层嵌套循环转为单层循环。从而能够更好的降低延迟和吞吐率。在HLS当中，可以在循环前面加上\verb|#pragma HLS loop_flatten|来将循环扁平化。
@@ -185,7 +185,7 @@
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{figures/array_partitioning.pdf}
-    \caption{三种数组分区方式示意}
+    \caption{三种数组分区方式示意图}
     \label{fig:array_partitioning}
 \end{figure}
 在Vitis HLS当中，如果定义一个数组，HLS会默认将其编译成一个双口RAM，允许一个线程写一个线程读。但如果想对该数组进行同时写或者同时读等并行的操作，就会受到极大的限制。数组分区的功能就是将一个数组分割成多个小块数组，在编译时体现为将一个RAM块分割成多个小的RAM块或者寄存器，从而实现对数组的并行操作。
@@ -196,7 +196,7 @@ Vitis HLS提供了三种数组分区的方式：block, cyclic, complete。block�
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{figures/array_reshaping.pdf}
-    \caption{三种数组重组方式示意}
+    \caption{三种数组重组方式示意图}
     \label{fig:array_reshaping}
 \end{figure}
 

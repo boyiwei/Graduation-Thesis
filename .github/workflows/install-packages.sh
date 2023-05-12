@@ -13,7 +13,7 @@ BIN_PKGS="latexmk l3build";
 REQUIRED_PKGS="$XECJK_PKGS $CTEX_PKGS caption footmisc filehook notoccite \
     multirow titlesec unicode-math";
 FONT_PKGS="fandol tex-gyre xits";
-EXTRA_PKGS="$ALGORITHM2E_PKGS $BIBLATEX_PKGS booktabs $NOMENCL_PKGS siunitx";
+EXTRA_PKGS="$ALGORITHM2E_PKGS $BIBLATEX_PKGS booktabs $NOMENCL_PKGS siunitx wrapfig";
 DOC_PKGS="hypdoc listings xcolor";
 
 tlmgr update --self

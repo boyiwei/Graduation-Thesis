@@ -13,11 +13,11 @@
 
 大数据集排序在如今的很多领域如光线追踪、碰撞检测等都有广泛的应用。然而，由于CPU平台的限制，大部分的排序算法的并行度并不能很好的挖掘，从而造成计算时间的指数上升。因此，对其进行加速具有很高的应用价值。近年来，对于该问题的研究一直在进行，但是绝大多数仅仅针对一个算法来进行讨论和优化，很少有能够涵盖大部分排序算法并对它们进行性能评估和筛选的工作。实际上，要找到最适合大数据集排序的算法，我们必须对多种排序算法及其组合进行评估和讨论，才能够得到最优的架构，这也是本工作的期望实现的目标。
 
-根据软硬件协同设计的思想，如果要加速一个算法，我们可以从两个方面进行思考。一个是软件层面，我们可以设计“硬件友好”的算法，即在实现更高性能的同时，使用更少的计算资源；另一个是硬件层面，设计更加合理的硬件架构，从而能够更加适合算法的数据访问调用特性，提高并行度，从而提升性能。基于这种思想，本工作首先从软件层面调研各种算法（冒泡排序、基数排序、归并排序等）的优劣以及硬件友好度，并且基于现有的工作对各个算法进一步的优化以提升其硬件友好度；同时从硬件层面上为各种算法设计硬件加速框架，在有限资源下尽可能的提高并行度和吞吐率。最后以FPGA作为验证平台，通过对各个硬件加速框架进行测试和评估，得出了最优的排序算法及其硬件加速架构。最后，作为应用，我们将我们的加速器运用在了八叉树构建过程中。
+基于软硬件协同设计的思想，本工作首先从软件层面调研各种算法（冒泡排序、基数排序、归并排序等）的优劣以及硬件友好度，并且基于现有的工作对各个算法进一步的优化以提升其硬件友好度；同时从硬件层面上为各种算法设计硬件加速框架，在有限资源下尽可能的提高并行度和吞吐率。最后以FPGA作为验证平台，通过对各个硬件加速框架进行测试和评估，得出了最优的排序算法及其硬件加速架构。最后，作为应用，我们将我们的加速器运用在了八叉树构建过程中。
 
-本课题的另外一个亮点在于其是基于Vitis HLS工具进行设计的。相较于使用Verilog HDL，HLS直接通过C程序编译出RTL电路，通过使用directives可以很方便的以相同的策略实现各种硬件优化，同时也能更加直观的查看硬件资源的使用情况。在完成C语言文件的开发以后，HLS会编译出相应的ip文件，我们在最后使用Vitis工具导入相应的ip，实现了最后的仿真和上板操作。
+本课题的另外一个亮点在于其是基于Vitis HLS工具进行设计的。相较于使用Verilog HDL，HLS直接通过C程序编译出RTL电路，通过使用directives可以很方便的以相同的策略实现各种硬件优化，同时也能更加直观的查看硬件资源的使用情况。在完成C语言文件的开发以后，HLS会编译出相应的ip文件，我们在最后使用Vivado导入相应的ip，实现了最后的仿真和上板操作。
 
-我们将上述最优架构部署在了Xilinx Alveo U280加速卡上，相较于部署在Intel Core i7-11800H CPU平台上的软件算法，我们的硬件加速架构可以相对C语言平台有大约4倍的提升，相对于Python语言平台有163倍的提升。
+我们将上述最优架构部署在了Xilinx Alveo U280加速卡上，相较于部署在Intel Core i7-11800H CPU平台上的软件算法，我们的硬件加速架构可以相对C语言平台有4.38倍的性能提升，23.91倍的能效提升，相对于Python语言平台有163.48倍的性能提升；794.21倍的能效提升。
 
 
 我们的项目代码已经开源到GitHub当中: \href{https://github.com/boyiwei/Sort-Acceleration}{https://github.com/boyiwei/Sort-Acceleration}
@@ -29,11 +29,11 @@
 Sorting for large datasets is widely used in many fields today. However, the parallelism of most of the sorting algorithms is not well exploited due to the limitation of CPU architecture, which causes an exponential increase in computation time. Though several research on this problem has been conducted, most of them only discussed one algorithm. Few works can cover most of the algorithms and evaluate their performance. In fact, to find the most suitable algorithm, we must evaluate multiple algorithms and their combinations in order to obtain the optimal architecture, which is also our goal.
 
 
-According to the idea of hardware-software co-design, if we want to accelerate an algorithm, we can optimize from the software level and from hardware level. Based on this idea, we first investigated the advantages and disadvantages of various algorithms and their hardware friendliness from the software level, and further optimizes them to improve its hardware friendliness. Meanwhile, we designed hardware accelerators for them to improve the parallelism with limited resources. Finally, the best sorting algorithm and its hardware accelerator are selected by evaluating each hardware accelerator's performance on FPGA. As an application, we applied our accelerator to the Octree building process.
+Based on the idea of software-hardware co-design, we first investigated the advantages and disadvantages of various algorithms and their hardware friendliness from the software level, and further optimizes them to improve its hardware friendliness. Meanwhile, we designed hardware accelerators for them to improve the parallelism with limited resources. Finally, the best sorting algorithm and its hardware accelerator are selected by evaluating each hardware accelerator's performance on FPGA. As an application, we applied our accelerator to the Octree building process.
 
-Another highlight of this project is that it is designed based on the Vitis HLS. Compared to Verilog HDL, HLS compiles RTL circuits directly from C programs. By using directives it can easily implement various hardware optimizations with the same strategy, and it is also easier see the utilization ratio of hardware resources. After finishing the C-program file, HLS compiles the corresponding ip file, and we use Vitis to import the corresponding ip in the end for the final simulation and on-board operation.
+Another highlight of this project is that it is designed based on the Vitis HLS. Compared to Verilog HDL, HLS compiles RTL circuits directly from C programs. By using directives it can easily implement various hardware optimizations with the same strategy, and it is also easier see the utilization ratio of hardware resources. After finishing the C-program file, HLS compiles the corresponding ip file, and we use Vivado to import the corresponding ip in the end for the final simulation and on-board operation.
 
-We implemented our architecture on Xilinx Alveo U280 Acceleration Card. Compared to the software algorithm deployed on an Intel Core i7-11800H CPU platform, our hardware-accelerated architecture can provide approximately 4$\times$  improvement relative to the C platform and 163$\times$ improvement relative to the Python platform.
+We implemented our architecture on Xilinx Alveo U280 Acceleration Card. Compared to the C code and Python code deployed on an Intel Core i7-11800H CPU platform, our hardware-accelerated architecture achieves up to $4.38\times$ speedup with $23.91\times$ energy reduction and $163.48\times$ speedup with $794.21\times$ energy reduction, respectively.
 
 
 \end{abstract*}

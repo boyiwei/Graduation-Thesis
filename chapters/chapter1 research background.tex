@@ -51,8 +51,8 @@ HLS的未来发展将面临一些挑战。首先，相较于直接编写Verilog�
 
 许多研究人员已经对排序算法的硬件加速进行了相关的研究。但是他们的侧重点各不相同。总的来说，他们的研究工作可以通过以下几点来进行分类：
 \begin{enumerate}
-    \item 选择研究的排序算法，如归并排序，堆排序，基数排序等；
-    \item 使用数据集的大小；
+    \item 选择研究的排序算法，如归并排序，堆排序，基数排序等。
+    \item 使用数据集的大小。
     \item 验证平台，如CPU、GPU、FPGA等。
 \end{enumerate}
 
@@ -82,15 +82,15 @@ Jataraman等\cite{jayaraman2022hypersort}  & 列排序      & HBM-FPGA        & 
 
 上述工作虽然对排序算法的优化以及硬件实现进行了探讨，但是他们仍然存在着一定的缺点：
 \begin{enumerate}
-    \item 部分工作仅仅是在算法层面进行了优化，在硬件架构上并没有讨论，如上述基于CPU、GPU平台的工作\cite{zurek2013comparison, jan2012fast}；
-    \item 在FPGA平台上的工作仅仅讨论了部分排序算法的优化，且没有对研究成果进行应用，如\cite{georgopoulos2016evaluation,chen2015energy, matai2016resolve, purnomo2016implementation}；
-    \item 大部分工作并没有发挥HLS的优势，而是使用传统的方式（如Verilog）等进行设计，如\cite{chen2015energy, purnomo2016implementation}；
+    \item 部分工作仅仅是在算法层面进行了优化，在硬件架构上并没有讨论，如上述基于CPU、GPU平台的工作\cite{zurek2013comparison, jan2012fast}。
+    \item 在FPGA平台上的工作仅仅讨论了部分排序算法的优化，且没有对研究成果进行应用，如\cite{georgopoulos2016evaluation,chen2015energy, matai2016resolve, purnomo2016implementation}。
+    \item 大部分工作并没有发挥HLS的优势，而是使用传统的方式（如Verilog）等进行设计，如\cite{chen2015energy, purnomo2016implementation}。
 \end{enumerate}
 
 基于以上的原因，我们的工作有以下优点：
 \begin{enumerate}
-    \item 充分体现软硬件协同设计的思想，即从软件算法角度和硬件加速角度进行了协同优化；
-    \item 探究了多种排序算法，同时以尽可能充分利用硬件资源为指导原则，充分发掘各个算法的效率和并行性；
+    \item 充分体现软硬件协同设计的思想，即从软件算法角度和硬件加速角度进行了协同优化。
+    \item 探究了多种排序算法，同时以尽可能充分利用硬件资源为指导原则，充分发掘各个算法的效率和并行性。
     \item 通过HLS来设计硬件加速架构，更加直观高效。
     \item 将设计的硬件加速架构应用到了解决实际问题当中，在这里我们以八叉树构建过程举例，直观地展示了加速器的加速效率。
 \end{enumerate}
